@@ -1,0 +1,3 @@
+[submodule "vkkodi"]
+	path = vkkodi
+	url = https://github.com/VkKodi/vkkodi
