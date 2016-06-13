@@ -15,13 +15,19 @@ find xbmc-vk.svoka.com -name ".idea" | xargs -I {} rm -rfv "{}"
 
 zip -qr xbmc-vk.svoka.com.zip xbmc-vk.svoka.com
 
+VER=`sed -nE 's/.*id=.*version="([^"]*).*/\1/p' xbmc-vk.svoka.com/addon.xml`
+
 popd > /dev/null
+
 
 pushd addons > /dev/null
 rm -rf xbmc-vk.svoka.com.zip xbmc-vk.svoka.com
 mv ../vkkodi/xbmc-vk.svoka.com.zip ./
 unzip -q xbmc-vk.svoka.com.zip
 python addons_xml_generator.py
+
+rm -rf xbmc-vk.svoka.com/*
+cp xbmc-vk.svoka.com.zip  xbmc-vk.svoka.com/xbmc-vk.svoka.com-$VER.zip
 
 popd > /dev/null
 
